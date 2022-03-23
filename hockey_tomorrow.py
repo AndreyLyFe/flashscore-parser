@@ -128,7 +128,7 @@ try:
     """
     math_hockey_all = list()
     for i in all_url.keys():
-        math_hockey_all.append(f'https://d.flashscore.ua/x/feed/df_od_1_{i}')
+        math_hockey_all.append(f'https://d.flashscore.com/x/feed/df_od_1_{i}')
 
     count = 2
     for id in math_hockey_all:
@@ -139,6 +139,7 @@ try:
         if text == "":
             continue
 
+        print(text)
         """
         Найдем тоталы и посчитаем их
         """

@@ -11,7 +11,7 @@ if __name__ == '__main__':
         elif answer == '3':
             import hockey_statistics_tomorrow
         elif answer == '4':
-            import hockey_today
+            import hockey_statistics_today
         else:
             print("Вы ввели что-то не то.")
     elif vid == '2':

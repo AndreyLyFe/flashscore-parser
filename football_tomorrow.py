@@ -25,6 +25,24 @@ def func(a: int, b: int, part_text: str, count: int, letter: str) -> int:
         return result, a, b
 
 
+def function_for_totals(a: int, b: int, part_text: str) -> float:
+    new_text = part_text[a:b]
+    if '[u]' in new_text:
+        a = float(new_text[:new_text.find('[u]')])
+        b = float(new_text[new_text.find('[u]') + 3:])
+        result = b - a
+        return result
+    elif '[d]' in new_text:
+        a = float(new_text[:new_text.find('[d]')])
+        b = float(new_text[new_text.find('[d]') + 3:])
+        result = b - a
+        return result
+    else:
+        return 0
+
+
+
+
 input_shans = float(input('Введите шанс на победу: '))
 input_izmen = float(input('Введите изменение(положительное число): '))
 print()
@@ -106,7 +124,7 @@ try:
     """
     math_hockey_all = list()
     for i in all_url.keys():
-        math_hockey_all.append(f'https://d.flashscore.ua/x/feed/df_od_1_{i}')
+        math_hockey_all.append(f'https://d.flashscore.com/x/feed/df_od_1_{i}')
 
     count = 2
     for id in math_hockey_all:
