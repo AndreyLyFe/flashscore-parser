@@ -155,13 +155,16 @@ try:
                     function_for_totals(a=negative_index_1, b=negative_index_2, part_text=new_text_from_total))
                 new_text_from_total = new_text_from_total[negative_index_2 + 3:]
             if sum(positive_list) / count_total > sum(negative_list) / count_total:
-                Excel.ws[f'W{count}'] = 'ТБ'
+                total_value = 'Б'
+                Excel.ws[f'V{count}'] = total_value
             elif sum(positive_list) / count_total < sum(negative_list) / count_total:
-                Excel.ws[f'W{count}'] = 'ТМ'
+                total_value = 'М'
+                Excel.ws[f'V{count}'] = total_value
             else:
-                Excel.ws[f'W{count}'] = 'Т = 0'
+                total_value = ''
+                Excel.ws[f'V{count}'] = 'T = 0'
         except:
-            Excel.ws[f'W{count}'] = 'Ошибка'
+            Excel.ws[f'V{count}'] = 'Ошибка тотала'
 
         """
         Здесь мы нашли индекс той буквы, на котором заканчивается информация по поводу победы,поражения команд
@@ -177,7 +180,7 @@ try:
         Excel.ws[f"E{count}"] = all_url[key][1]
         Excel.ws[f"D{count}"] = all_url[key][0]
 
-        Excel.ws[f"V{count}"] = f'{key}'
+        Excel.ws[f"W{count}"] = f'{key}'
 
         data_match = datetime.datetime.fromtimestamp(int(f"{all_url[key][2]}")).strftime('%Y-%m-%d %H:%M:%S').split()
         Excel.ws[f"A{count}"] = data_match[0]
@@ -233,20 +236,20 @@ try:
                 Excel.ws[f"U{count}"] = 'None'
             elif c_p1 < input_shans_x and res_p1 > input_izmen_x:
                 if c_p2 > input_shans and res_p2 < (input_izmen * -1):
-                    Excel.ws[f"U{count}"] = 'П2'
+                    Excel.ws[f"U{count}"] = 'П2'+total_value
                 else:
-                    Excel.ws[f"U{count}"] = 'X2'
+                    Excel.ws[f"U{count}"] = 'X2'+total_value
 
 
             elif c_p2 < input_shans_x and res_p2 > input_izmen_x:
                 if c_p1 > input_shans and res_p1 < (input_izmen * -1):
-                    Excel.ws[f"U{count}"] = 'П1'
+                    Excel.ws[f"U{count}"] = 'П1'+total_value
                 else:
-                    Excel.ws[f"U{count}"] = '1X'
+                    Excel.ws[f"U{count}"] = '1X'+total_value
             elif c_p2 > input_shans and res_p2 < (input_izmen * -1):
-                Excel.ws[f"U{count}"] = 'П2'
+                Excel.ws[f"U{count}"] = 'П2'+total_value
             elif c_p1 > input_shans and res_p1 < (input_izmen * -1):
-                Excel.ws[f"U{count}"] = 'П1'
+                Excel.ws[f"U{count}"] = 'П1'+total_value
             else:
                 Excel.ws[f"U{count}"] = 'Отсутствует'
 

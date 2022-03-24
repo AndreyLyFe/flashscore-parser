@@ -13,7 +13,7 @@ print("Работа программы началась.\nПожалуйста �
 
 for i in range(sheet.max_row - 1):
 
-  key = sheet[f'V{i+2}'].value
+  key = sheet[f'W{i+2}'].value
   url = f'https://d.flashscore.com/x/feed/dc_1_{key}'
   headers = {'x-fsign': 'SW9D1eZo',
              'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'}
