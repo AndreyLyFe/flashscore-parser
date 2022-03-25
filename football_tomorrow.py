@@ -30,12 +30,12 @@ def function_for_totals(a: int, b: int, part_text: str) -> float:
     if '[u]' in new_text:
         a = float(new_text[:new_text.find('[u]')])
         b = float(new_text[new_text.find('[u]') + 3:])
-        result = b - a
+        result = (b - a) / a
         return result
     elif '[d]' in new_text:
         a = float(new_text[:new_text.find('[d]')])
         b = float(new_text[new_text.find('[d]') + 3:])
-        result = b - a
+        result = (b - a) / a
         return result
     else:
         return 0
@@ -154,10 +154,10 @@ try:
                 negative_list.append(
                     function_for_totals(a=negative_index_1, b=negative_index_2, part_text=new_text_from_total))
                 new_text_from_total = new_text_from_total[negative_index_2 + 3:]
-            if sum(positive_list) / count_total > sum(negative_list) / count_total:
+            if sum(positive_list) / count_total < sum(negative_list) / count_total:
                 total_value = 'Б'
                 Excel.ws[f'V{count}'] = total_value
-            elif sum(positive_list) / count_total < sum(negative_list) / count_total:
+            elif sum(positive_list) / count_total > sum(negative_list) / count_total:
                 total_value = 'М'
                 Excel.ws[f'V{count}'] = total_value
             else:

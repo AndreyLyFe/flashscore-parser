@@ -139,7 +139,6 @@ try:
         if text == "":
             continue
 
-        print(text)
         """
         Найдем тоталы и посчитаем их
         """
@@ -160,10 +159,10 @@ try:
                 negative_list.append(
                     function_for_totals(a=negative_index_1, b=negative_index_2, part_text=new_text_from_total))
                 new_text_from_total = new_text_from_total[negative_index_2 + 3:]
-            if sum(positive_list) / count_total > sum(negative_list) / count_total:
+            if sum(positive_list) / count_total < sum(negative_list) / count_total:
                 total_value = 'Б'
                 Excel.ws[f'V{count}'] = total_value
-            elif sum(positive_list) / count_total < sum(negative_list) / count_total:
+            elif sum(positive_list) / count_total > sum(negative_list) / count_total:
                 total_value = 'М'
                 Excel.ws[f'V{count}'] = total_value
             else:
